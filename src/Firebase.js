@@ -9,8 +9,14 @@
 //     appId: "1:596320504399:web:f94f02759b741dc4be383a",
 //     measurementId: "G-2GTXT2YPZ4"
 //   };
+// having 2-way sync database (realtime nosql)
+// requests and security (config) great with firebase
 
-import firebase from "firebase";
+//import firebase from "firebase";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/storage";
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyAGIQChvlp8M-PcgRem1SZIJBmliNTqp_Y",
@@ -22,9 +28,9 @@ const firebaseApp = firebase.initializeApp({
     appId: "1:596320504399:web:f94f02759b741dc4be383a",
     measurementId: "G-2GTXT2YPZ4"
 })
-
-const db = firebaseApp.firestore()
-const auth = firebaseApp.auth()
-const storage = firebaseApp.storage()
+// grab three services from firebase and store them in three variables
+const db = firebaseApp.firestore() // access the db
+const auth = firebaseApp.auth() // access the authentication (log in, log out, create users, etc)
+const storage = firebaseApp.storage() // upload pictures and stuff (don't have to worry about S3)
 
 export {db, auth, storage}
